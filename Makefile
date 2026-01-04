@@ -1,5 +1,5 @@
 IMG_NAME=ebvn/test123
-GIT_TAG := $(shell git describe --tags --abbrev=0 || git rev-parse --short HEAD)
+GIT_TAG := $(shell git describe --tags --exact-match 2>/dev/null)
 BRANCH  := $(shell git rev-parse --abbrev-ref HEAD)
 
 ifeq ($(BRANCH),main)
@@ -57,3 +57,9 @@ docker-build:
 
 docker-release:
 	docker push $(IMG_NAME):$(IMG_TAG)
+
+DOCKER_USERNAME ?=
+DOCKER_PASSWORD ?=
+
+docker-login:
+	echo "$(DOCKER_PASSWORD)" | docker login -u "$(DOCKER_USERNAME)" --password-stdin
