@@ -9,6 +9,7 @@ on:
 
 jobs:
   ci_pipeline:
+#    if: false
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

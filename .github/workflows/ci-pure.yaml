@@ -1,14 +1,15 @@
 name: ci-pipeline-pure
 
 on:
-#  push:
-#    branches:
-#      - main
-#    tags:
-#      - 'v[0-9]+.[0-9]+.[0-9]+'
+  push:
+    branches:
+      - main
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
 
 jobs:
   ci_pipeline:
+    if: false
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
