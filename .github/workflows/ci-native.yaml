@@ -3,10 +3,12 @@ name: ci-pipeline
 on:
   push:
     branches:
-      - test
+      - main
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
 
 jobs:
-  ci_pipeline:
+  ci_native_pipeline:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
