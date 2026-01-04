@@ -1,4 +1,4 @@
-name: ci-pipeline
+name: ci-pipeline-native
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
       - 'v[0-9]+.[0-9]+.[0-9]+'
 
 jobs:
-  ci_native_pipeline:
+  ci_pipeline:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
