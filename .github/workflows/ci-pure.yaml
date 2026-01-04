@@ -1,6 +1,8 @@
 name: ci-pipeline-pure
 
 on:
+  pull_request:
+    branches: [ "main" ]
   push:
     branches:
       - main
@@ -21,10 +23,12 @@ jobs:
         run: make docker-build
 
       - name: Log in to Docker Hub
+        if: ${{ github.event_name != 'pull_request' }}
         run: make docker-login
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Push docker image
+        if: ${{ github.event_name != 'pull_request' }}
         run: make docker-release
