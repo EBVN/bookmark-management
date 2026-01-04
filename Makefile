@@ -1,5 +1,16 @@
 IMG_NAME=ebvn/test123
-IMG_TAG?=$(shell git describe --tags --abbrev=0 || git rev-parse --short HEAD)
+GIT_TAG := $(shell git describe --tags --abbrev=0 || git rev-parse --short HEAD)
+BRANCH  := $(shell git rev-parse --abbrev-ref HEAD)
+
+ifeq ($(BRANCH),main)
+  IMG_TAG := dev
+endif
+
+ifneq ($(GIT_TAG),)
+  IMG_TAG := $(GIT_TAG)
+endif
+
+export IMG_TAG
 
 .PHONY: dev-run swagger run-app test docker-test docker-build
 
@@ -42,9 +53,7 @@ docker-test:
 	fi
 
 docker-build:
-	docker build -t $(IMG_NAME):dev .
+	docker build -t $(IMG_NAME):$(IMG_TAG) .
 
 docker-release:
-	docker tag $(IMG_NAME):dev $(IMG_NAME):$(IMG_TAG)
-	docker push $(IMG_NAME):dev
 	docker push $(IMG_NAME):$(IMG_TAG)
