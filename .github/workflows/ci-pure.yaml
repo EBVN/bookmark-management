@@ -21,6 +21,8 @@ jobs:
 
       - name: Build docker image
         run: make docker-build
+        env:
+          IMG_TAG: dev
 
       - name: Log in to Docker Hub
         if: ${{ github.event_name != 'pull_request' }}
