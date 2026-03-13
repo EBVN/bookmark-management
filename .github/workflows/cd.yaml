@@ -14,7 +14,7 @@ jobs:
     runs-on: self-hosted
     steps:
       - name: Deploy
-        working-directory: /root/bookmark-management/deployment
+        working-directory: /root/deployment-test
         run: |
           docker rm -f bookmark_service
           docker-compose pull bookmark_service
