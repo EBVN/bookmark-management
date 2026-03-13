@@ -1,4 +1,4 @@
-IMG_NAME=ebvn/test123
+IMG_NAME=ebvn/test1234
 GIT_TAG := $(shell git describe --tags --exact-match 2>/dev/null)
 BRANCH  := $(shell git rev-parse --abbrev-ref HEAD)
 
