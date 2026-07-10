@@ -2,12 +2,15 @@ package api
 
 import "github.com/kelseyhightower/envconfig"
 
-// Config struct for app config
+// Config represents the configuration of the application
 type Config struct {
-	AppName string `envconfig:"APP_NAME" default:"bookmark_service"`
-	AppPort string `envconfig:"APP_PORT" default:"8080"`
+	AppPort     string `default:"8080" envconfig:"APP_PORT"`
+	ServiceName string `default:"bookmark_service" envconfig:"SERVICE_NAME"`
+	InstanceID  string `default:"" envconfig:"INSTANCE_ID"`
+	BasePath    string `default:"/" envconfig:"BASE_PATH"`
 }
 
+// NewConfig creates a new config struct based on the environment variables
 func NewConfig() (*Config, error) {
 	cfg := &Config{}
 	err := envconfig.Process("", cfg)
