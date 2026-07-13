@@ -1,0 +1,27 @@
+version: '3.7'
+
+services:
+
+  redis:
+    image: redis:alpine
+    container_name: redis
+
+  bookmark_service:
+    image: ebvn/test_k04:v0.1.2
+    build: .
+    restart: always
+    container_name: bookmark_service
+    env_file:
+      - ./bookmark_service/.env
+
+  portal:
+    image: ebvn/bookmark-app-portal:dev
+    container_name: portal
+
+  nginx:
+    image: nginx:alpine
+    container_name: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:Z
