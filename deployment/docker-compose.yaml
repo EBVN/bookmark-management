@@ -7,7 +7,7 @@ services:
     container_name: redis
 
   bookmark_service:
-    image: ebvn/test_k04:v0.1.2
+    image: ebvn/test_k04:v0.1.4
     build: .
     restart: always
     container_name: bookmark_service
