@@ -31,4 +31,4 @@ jobs:
 
       - name: push image
         if: ${{ github.event_name != 'pull_request' }}
-        run: make docker-push
+        run: make docker-release
