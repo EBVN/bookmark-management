@@ -34,7 +34,7 @@ func TestShortenLink_Redirect(t *testing.T) {
 
 			setupTestRequest: func(c *gin.Context) {
 				c.Request = httptest.NewRequest(http.MethodGet, "/v1/links/redirect/1234567", nil)
-				//c.Params = gin.Params{{Key: "code", Value: "1234567"}}
+				c.Params = gin.Params{{Key: "code", Value: "1234567"}}
 			},
 
 			expectedCode: http.StatusMovedPermanently,
