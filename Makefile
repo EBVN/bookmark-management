@@ -1,7 +1,7 @@
 .PHONY: run swagger test dev-run
 IMG_NAME=ebvn/lecture_4
 GIT_TAG := $(shell git describe --tags --exact-match --abbrev=0 2>/dev/null)
-IMG_TAG := dev
+IMG_TAG := latest
 
 ifneq ($(GIT_TAG),)
 	IMG_TAG := $(GIT_TAG)
