@@ -2,16 +2,20 @@ basePath: /
 definitions:
   handler.shortenLinkInput:
     properties:
+      exp:
+        minimum: 500
+        type: integer
       url:
         type: string
     required:
+    - exp
     - url
     type: object
 info:
   contact: {}
   description: API for managing bookmarks
   title: Bookmark Management API
-  version: 1.0.0
+  version: 0.1.7
 paths:
   /genpass:
     get:
