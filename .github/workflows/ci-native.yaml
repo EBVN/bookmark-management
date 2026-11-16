@@ -38,7 +38,7 @@ jobs:
           images: ${{ secrets.DOCKER_USERNAME }}/lecture_4
           tags: |
             type=ref,event=tag
-            type=raw,value=dev,enable=${{ github.ref_name == 'master' }}
+            type=raw,value=latest,enable=${{ github.ref_name == 'master' }}
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v6

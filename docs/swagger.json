@@ -4,7 +4,7 @@
         "description": "API for managing bookmarks",
         "title": "Bookmark Management API",
         "contact": {},
-        "version": "1.0.0"
+        "version": "0.1.7"
     },
     "basePath": "/",
     "paths": {
@@ -106,9 +106,14 @@
         "handler.shortenLinkInput": {
             "type": "object",
             "required": [
+                "exp",
                 "url"
             ],
             "properties": {
+                "exp": {
+                    "type": "integer",
+                    "minimum": 500
+                },
                 "url": {
                     "type": "string"
                 }
